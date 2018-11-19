@@ -11,5 +11,5 @@ stdweb = "0.4"
 git = "https://github.com/DenisKolodin/yew"
 
 [lib]
-name = "green-thumb"
+name = "green_thumb"
 path = "src/lib.rs"
