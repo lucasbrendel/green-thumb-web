@@ -1,0 +1,15 @@
+[package]
+name = "green-thumb"
+version = "0.1.0"
+authors = ["Lucas Brendel <lucasbrendel@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+stdweb = "0.4"
+
+[dependencies.yew]
+git = "https://github.com/DenisKolodin/yew"
+
+[lib]
+name = "green-thumb"
+path = "src/lib.rs"
