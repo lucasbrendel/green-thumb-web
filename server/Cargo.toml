@@ -5,4 +5,5 @@ name = "green-thumb"
 version = "0.1.0"
 
 [dependencies]
-rocket = "0.3.17"
+maud = "0.19.0"
+rocket = "0.4.0-rc.1"
