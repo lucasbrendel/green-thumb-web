@@ -1,7 +1,7 @@
 extern crate green_thumb;
 extern crate yew;
 
-use hunt_the_wumpus::Model;
+use green_thumb::Model;
 use yew::prelude::App;
 
 fn main() {

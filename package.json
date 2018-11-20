@@ -2,7 +2,7 @@
   "name": "green-thumb-web",
   "version": "0.1.0",
   "description": "Plant Tracker",
-  "main": "green_thumb.js",
+  "main": "green-thumb.js",
   "repository": "https://github.com/lucasbrendel/green-thumb-web",
   "author": "Lucas Brendel <lucasbrendel@gmail.com>",
   "license": "MIT",
