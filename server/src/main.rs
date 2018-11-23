@@ -18,13 +18,20 @@ extern crate simplelog;
 mod data;
 mod logging;
 
+use rocket::response::NamedFile;
+
 #[get("/")]
 fn index() -> &'static str {
     "Hello, world!"
 }
 
+#[get("/favicon.ico")]
+pub fn favicon() -> Option<NamedFile> {
+    NamedFile::open("static/favicon.ico").ok()
+}
+
 fn main() {
     logging::logging_init();
     let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite().mount("/", routes![index, favicon]).launch();
 }
