@@ -16,6 +16,7 @@ extern crate simplelog;
 
 #[allow(dead_code)]
 mod data;
+mod logging;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -23,6 +24,7 @@ fn index() -> &'static str {
 }
 
 fn main() {
+    logging::logging_init();
     let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
     rocket::ignite().mount("/", routes![index]).launch();
 }
