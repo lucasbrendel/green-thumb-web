@@ -12,14 +12,12 @@ extern crate simplelog;
 
 #[allow(dead_code)] mod data;
 
-use data::DataMgr;
-
 #[get("/")]
 fn index() -> &'static str {
     "Hello, world!"
 }
 
 fn main() {
-    let _mgr = DataMgr::new(String::from("./db/green-thumb.db"));
+    let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
     rocket::ignite().mount("/", routes![index]).launch();
 }

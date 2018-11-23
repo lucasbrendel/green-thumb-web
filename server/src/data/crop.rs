@@ -1,5 +1,5 @@
 use chrono::{Duration, NaiveDate};
-use data::plant::Plant;
+use crate::data::plant::Plant;
 use rusqlite::types::*;
 use rusqlite::Connection;
 
@@ -42,8 +42,8 @@ impl Crop {
 mod tests {
     use super::*;
 
-    use db::plant::PlantType;
-    use db::DataMgr;
+    use crate::data::plant::PlantType;
+    use crate::data::DataMgr;
 
     #[test]
     fn new_crop() {

@@ -79,14 +79,13 @@ impl Task {
     /// Access all tasks
     pub fn get_tasks(conn: &Connection) -> Result<Vec<Task>> {
         let mut tasks: Vec<Task> = Vec::new();
-        let mut stmt =
-            try!(conn.prepare("SELECT id, text, is_completed, completed_date FROM tasks"));
-        let map_tasks = try!(stmt.query_map(NO_PARAMS, |row| Task {
+        let mut stmt = conn.prepare("SELECT id, text, is_completed, completed_date FROM tasks")?;
+        let map_tasks = stmt.query_map(NO_PARAMS, |row| Task {
             id: row.get(0),
             text: row.get(1),
             is_completed: row.get(2),
             completed_date: row.get(3),
-        }));
+        })?;
         for task in map_tasks {
             info!("Accessing {:?}", task);
             tasks.push(task.unwrap());
@@ -95,15 +94,13 @@ impl Task {
     }
 
     pub fn get_task_by_id(conn: &Connection, id: i64) -> Result<Task> {
-        let mut stmt = try!(
-            conn.prepare("SELECT text, is_completed, completed_date FROM tasks WHERE id = :id")
-        );
-        let task = try!(stmt.query_map(&[&id], |row| Task {
+        let mut stmt = conn.prepare("SELECT text, is_completed, completed_date FROM tasks WHERE id = :id")?;
+        let task = stmt.query_map(&[&id], |row| Task {
             id,
             text: row.get(0),
             is_completed: row.get(1),
             completed_date: row.get(2)
-        }));
+        })?;
         Ok(task.last().unwrap().unwrap())
     }
 }
@@ -111,7 +108,7 @@ impl Task {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use db::DataMgr;
+    use crate::data::DataMgr;
 
     #[test]
     fn new_task() {
