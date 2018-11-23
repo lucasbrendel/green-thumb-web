@@ -126,7 +126,7 @@ mod tests {
 
     #[test]
     fn new_plant() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-new_plant.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-new_plant.db"));
         let plant = Plant::new(&mgr.conn, String::from("Tomato"), 45, PlantType::Annual);
         assert_eq!("Tomato", plant.name);
         assert_eq!(45, plant.days_to_maturity);
@@ -135,7 +135,7 @@ mod tests {
 
     #[test]
     fn get_plant_by_id() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-get_plant_by_id.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-get_plant_by_id.db"));
         let _t = Plant::new(&mgr.conn, String::from("Tomato"), 45, PlantType::Annual);
         let plant = Plant::get_plant_by_id(&mgr.conn, 1);
         assert_eq!(45, plant.unwrap().days_to_maturity);
@@ -143,7 +143,7 @@ mod tests {
 
     #[test]
     fn get_plants() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-get_plants.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-get_plants.db"));
         let tomato = Plant::new(&mgr.conn, String::from("Tomato"), 45, PlantType::Annual);
         let beans = Plant::new(&mgr.conn, String::from("Beans"), 52, PlantType::Perennial);
         let cucumber = Plant::new(&mgr.conn, String::from("Cucumber"), 31, PlantType::Annual);

@@ -21,7 +21,7 @@ impl Task {
     /// # Example
     ///
     /// ```
-    /// let mgr = datamgr::DataMgr::new(String::from("./data/green-thumb-test-new_task.db"));
+    /// let mgr = datamgr::DataMgr::new(String::from("./db/green-thumb-test-new_task.db"));
     /// let task = Task::new(&mgr.conn, String::from("Water garden"));
     /// assert_eq!(String::from("Water garden"), task.text);
     /// ```
@@ -115,14 +115,14 @@ mod tests {
 
     #[test]
     fn new_task() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-new_task.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-new_task.db"));
         let task = Task::new(&mgr.conn, String::from("Water garden"));
         assert_eq!(String::from("Water garden"), task.text);
     }
 
     #[test]
     fn get_tasks() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-get_task.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-get_task.db"));
         let task1 = Task::new(&mgr.conn, String::from("Water garden"));
         let task2 = Task::new(&mgr.conn, String::from("Weed garden"));
         let tasks = Task::get_tasks(&mgr.conn).unwrap();
@@ -132,7 +132,7 @@ mod tests {
 
     #[test]
     fn set_completed() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-set_completed.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-set_completed.db"));
         let mut task1 = Task::new(&mgr.conn, String::from("Test completion"));
         assert_eq!(false, task1.get_completed());
         task1.set_completed(&mgr.conn);
@@ -141,7 +141,7 @@ mod tests {
 
     #[test]
     fn completed_date() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-completed_date.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-completed_date.db"));
         let mut task = Task::new(&mgr.conn, String::from("Test completion"));
         // Accessing the value assigned at creation to ensure that it changes when the task is marked completed
         let date = task.get_completed_date();
@@ -151,7 +151,7 @@ mod tests {
 
     #[test]
     fn get_text() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-completed_date.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-completed_date.db"));
         let mut task = Task::new(&mgr.conn, String::from("Test completion"));
         assert_eq!(String::from("Test completion"), task.get_text());
         task.set_text(&mgr.conn, String::from("Updated Text."));
@@ -160,7 +160,7 @@ mod tests {
 
     #[test]
     fn get_task_by_id() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-get_task_by_id.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-get_task_by_id.db"));
         let task = Task::new(&mgr.conn, String::from("Get by Id"));
         let task2 = Task::get_task_by_id(&mgr.conn, task.id);
         assert_eq!(task.get_text(), task2.unwrap().get_text());

@@ -48,7 +48,7 @@ mod tests {
 
     #[test]
     fn new_crop() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-new_crop.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-new_crop.db"));
         let plant = Plant::new(&mgr.conn, String::from("Bean"), 75, PlantType::Annual);
         let crop = Crop::new(&mgr.conn, plant.id, 5, NaiveDate::from_ymd(2018, 5, 6));
         assert_eq!(5, crop.num_plants);
@@ -58,7 +58,7 @@ mod tests {
 
     #[test]
     fn harvest_date() {
-        let mgr = DataMgr::new(String::from("./data/green-thumb-test-harvest_date.db"));
+        let mgr = DataMgr::new(String::from("./db/green-thumb-test-harvest_date.db"));
         let plant = Plant::new(&mgr.conn, String::from("Bean"), 75, PlantType::Annual);
         let crop = Crop::new(&mgr.conn, plant.id, 5, NaiveDate::from_ymd(2018, 5, 6));
         assert_eq!(
