@@ -28,7 +28,7 @@
     "build:scss": "node-sass --include-path scss scss/green-thumb.scss css/green-thumb.css",
     "build:css": "postcss --use autoprefixer -o static/green-thumb.css css/green-thumb.css",
     "build:style": "run-s build:scss build:css",
-    "build:copy": "cp target/deploy/green-thumb.css release/ && cp target/deploy/green-thumb.wasm release/ && cp target/deploy/index.html release/ && cp target/deploy/favicon.ico release/",
+    "build:copy": "cp css/green-thumb.css release/ && cp target/deploy/green-thumb.wasm release/ && cp target/deploy/index.html release/ && cp target/deploy/favicon.ico release/",
     "build": "run-s clean:deploy build:rs build:js build:style build:copy",
     "clean:deploy": "rm -rf /release",
     "prod": "run-s build serve",
