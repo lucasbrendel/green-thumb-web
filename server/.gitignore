@@ -7,3 +7,7 @@
 
 # SQL Databases
 *.db
+
+static/*
+
+*.log
