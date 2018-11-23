@@ -10,10 +10,10 @@ use std::sync::{Arc, Mutex};
 fn index(db: State<Arc<sled::Tree>>) -> Markup {
     // maud macro
     html! {
-        link rel="stylesheet" href="static/styles.css" {}
+        link rel="stylesheet" href="static/green-thumb.css" {}
         body {}
         // yew-generated javascript attaches to <body>
-        script src=("static/ui.js") {}
+        script src=("static/green-thumb.js") {}
     }
 }
 
