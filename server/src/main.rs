@@ -1,6 +1,8 @@
 #![feature(proc_macro_hygiene, decl_macro)]
+#![feature(plugin)]
+#![plugin(rocket_codegen)]
+#![feature(custom_attribute)]
 
-#[macro_use]
 extern crate rocket;
 extern crate chrono;
 extern crate rusqlite;
@@ -13,25 +15,17 @@ extern crate strum_macros;
 #[macro_use]
 extern crate log;
 extern crate simplelog;
+extern crate sled;
+extern crate maud;
 
 #[allow(dead_code)]
 mod data;
 mod logging;
+mod routes;
 
-use rocket::response::NamedFile;
-
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
-}
-
-#[get("/favicon.ico")]
-pub fn favicon() -> Option<NamedFile> {
-    NamedFile::open("static/favicon.ico").ok()
-}
 
 fn main() {
     logging::logging_init();
     let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
-    rocket::ignite().mount("/", routes![index, favicon]).launch();
+    rocket::ignite().mount("/", routes![routes::index, routes::favicon]).launch();
 }
