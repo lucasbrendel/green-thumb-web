@@ -67,7 +67,8 @@ impl Plant {
                 &Vec::new(),
                 &String::from(""),
             ],
-        ).unwrap();
+        )
+        .unwrap();
 
         Plant {
             id: conn.last_insert_rowid(),
@@ -82,7 +83,8 @@ impl Plant {
     /// Access all defined plants
     pub fn get_plants(conn: &Connection) -> Result<Vec<Plant>> {
         let mut plants: Vec<Plant> = Vec::new();
-        let mut stmt = conn.prepare("SELECT id, name, days_to_maturity, zones, notes, plant_type FROM plants")?;
+        let mut stmt = conn
+            .prepare("SELECT id, name, days_to_maturity, zones, notes, plant_type FROM plants")?;
         info!("Get Plants: {:?}", stmt);
         let map_plants = stmt.query_map(NO_PARAMS, |row| Plant {
             id: row.get(0),
@@ -102,7 +104,7 @@ impl Plant {
     /// Obtain a plant based on the database id provided
     pub fn get_plant_by_id(conn: &Connection, uid: i64) -> Result<Plant> {
         let mut stmt = conn.prepare(
-            "SELECT name, days_to_maturity, zones, notes, plant_type FROM plants WHERE id = :uid"
+            "SELECT name, days_to_maturity, zones, notes, plant_type FROM plants WHERE id = :uid",
         )?;
         info!("Get Plant by ID: {:?}", stmt);
         let plant = stmt.query_map(&[&uid], |row| Plant {

@@ -29,7 +29,8 @@ impl Task {
         conn.execute(
             "INSERT INTO tasks (text, is_completed, completed_date) VALUES (?1, ?2, ?3)",
             &[&text, &false as &ToSql, &Local::now()],
-        ).unwrap();
+        )
+        .unwrap();
 
         Task {
             id: conn.last_insert_rowid(),
@@ -73,7 +74,8 @@ impl Task {
         conn.execute_named(
             "UPDATE tasks SET text = :text WHERE id = :id",
             &[(":text", &self.text), (":id", &self.id)],
-        ).unwrap();
+        )
+        .unwrap();
     }
 
     /// Access all tasks
@@ -94,12 +96,13 @@ impl Task {
     }
 
     pub fn get_task_by_id(conn: &Connection, id: i64) -> Result<Task> {
-        let mut stmt = conn.prepare("SELECT text, is_completed, completed_date FROM tasks WHERE id = :id")?;
+        let mut stmt =
+            conn.prepare("SELECT text, is_completed, completed_date FROM tasks WHERE id = :id")?;
         let task = stmt.query_map(&[&id], |row| Task {
             id,
             text: row.get(0),
             is_completed: row.get(1),
-            completed_date: row.get(2)
+            completed_date: row.get(2),
         })?;
         Ok(task.last().unwrap().unwrap())
     }

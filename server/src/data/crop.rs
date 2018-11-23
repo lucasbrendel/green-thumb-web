@@ -21,7 +21,8 @@ impl Crop {
         conn.execute(
             "INSERT INTO crops (num_plants, date_planted, plant_id) VALUES (?1, ?2, ?3)",
             &[&num_plants, &date_planted as &ToSql, &plant_id],
-        ).unwrap();
+        )
+        .unwrap();
 
         Crop {
             id: conn.last_insert_rowid(),

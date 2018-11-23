@@ -24,7 +24,8 @@ impl DataMgr {
             plant_type TEXT NOT NULL
             );",
                 NO_PARAMS,
-            ).unwrap();
+            )
+            .unwrap();
         data.conn
             .execute(
                 "CREATE TABLE IF NOT EXISTS crops (
@@ -34,7 +35,8 @@ impl DataMgr {
                 plant_id INTEGER NOT NULL,
                 FOREIGN KEY(plant_id) REFERENCES plants(id));",
                 NO_PARAMS,
-            ).unwrap();
+            )
+            .unwrap();
         data.conn
             .execute(
                 "CREATE TABLE IF NOT EXISTS tasks (
@@ -43,7 +45,8 @@ impl DataMgr {
                 is_completed BOOL NOT NULL,
                 completed_date TEXT);",
                 NO_PARAMS,
-            ).unwrap();
+            )
+            .unwrap();
         data
     }
 }
