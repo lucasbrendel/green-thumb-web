@@ -1,0 +1,24 @@
+{
+  "name": "green-thumb-web",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "ROCKET_ENV": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/emk/rust.tgz"
+    }
+  ]
+}
