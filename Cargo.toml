@@ -16,11 +16,6 @@ simplelog = "0.5.3"
 strum = "0.11.0"
 strum_macros = "0.11.0"
 
-# [dependencies.maud]
-# branch = "master"
-# features = ["rocket"]
-# git = "https://github.com/lfairy/maud.git"
-
 [dependencies.rusqlite]
 features = ["chrono"]
 version = "0.15.0"
