@@ -1,6 +1,8 @@
+use self::handlebars::{
+    Context, Handlebars, Helper, HelperResult, JsonRender, Output, RenderContext,
+};
 use rocket::response::NamedFile;
-use rocket_contrib::templates::{Template, handlebars};
-use handlebars::{Helper, Handlebars, RenderContext, Context, Output, HelperResult, JsonRender};
+use rocket_contrib::templates::{handlebars, Template};
 use std::path::{Path, PathBuf};
 
 #[derive(Serialize)]
@@ -11,9 +13,7 @@ struct TemplateContext {
 /// This is the entrypoint
 #[get("/")]
 pub fn index() -> Template {
-    Template::render("index", &TemplateContext {
-        parent: "layout"
-    })
+    Template::render("index", &TemplateContext { parent: "layout" })
 }
 
 #[get("/favicon.ico")]
@@ -33,7 +33,7 @@ pub fn helper(
     _: &Handlebars,
     _: &Context,
     _: &mut RenderContext,
-    out: &mut Output
+    out: &mut Output,
 ) -> HelperResult {
     if let Some(param) = h.param(0) {
         out.write("<b><i>")?;
