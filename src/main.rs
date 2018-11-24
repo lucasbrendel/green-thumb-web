@@ -24,7 +24,7 @@ mod routes;
 use rocket_contrib::templates::Template;
 
 fn main() {
-    logging::logging_init();
+    // logging::logging_init();
     // let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
     rocket::ignite()
         .mount(
