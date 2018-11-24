@@ -15,6 +15,8 @@ serde_derive = "1.0.80"
 simplelog = "0.5.3"
 strum = "0.11.0"
 strum_macros = "0.11.0"
+diesel = { version = "1.0.0", features = ["postgres"] }
+dotenv = "0.9.0"
 
 # [dependencies.rusqlite]
 # features = ["chrono"]
