@@ -1,4 +1,4 @@
-use handlebars::{Context, Handlebars, Helper, HelperResult, JsonRender, Output, RenderContext};
+use self::handlebars::{Context, Handlebars, Helper, HelperResult, JsonRender, Output, RenderContext};
 use rocket::response::NamedFile;
 use rocket_contrib::templates::{handlebars, Template};
 use std::path::{Path, PathBuf};
