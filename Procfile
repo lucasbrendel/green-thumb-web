@@ -1,1 +1,1 @@
-web: ./target/release/green_thumb
+web: ./target/release/green-thumb
