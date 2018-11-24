@@ -1,20 +1,13 @@
 use rocket;
 use rocket::response::NamedFile;
-use rocket::State;
 use maud::{html, Markup};
 use std::path::{Path, PathBuf};
-use std::sync::{Arc, Mutex};
 
 /// This is the entrypoint
 #[get("/")]
-fn index(db: State<Arc<sled::Tree>>) -> Markup {
+fn index() -> &'static str {
     // maud macro
-    html! {
-        link rel="stylesheet" href="static/green-thumb.css" {}
-        body {}
-        // yew-generated javascript attaches to <body>
-        script src=("static/green-thumb.js") {}
-    }
+    "Hello, World"
 }
 
 #[get("/favicon.ico")]

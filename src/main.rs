@@ -27,5 +27,5 @@ mod routes;
 fn main() {
     logging::logging_init();
     let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
-    rocket::ignite().mount("/", routes![routes::index, routes::favicon, routes::static_file, routes::ugly_hack]).launch();
+    rocket::ignite().mount("/", routes![routes::index, routes::favicon, routes::static_file]).launch();
 }
