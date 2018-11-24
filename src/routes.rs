@@ -27,10 +27,3 @@ pub fn favicon() -> Option<NamedFile> {
 pub fn static_file(path: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("static/").join(path)).ok()
 }
-
-// TODO: remove this when we figure out how to change the native Rust
-// WebAssembly's generated JavaScript code to point at "static/" prefix.
-#[get("/static/green-thumb.wasm")]
-pub fn ugly_hack() -> Option<NamedFile> {
-    NamedFile::open(Path::new("static/ui.wasm")).ok()
-}
