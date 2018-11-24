@@ -27,6 +27,7 @@ pub fn static_file(path: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("static/").join(path)).ok()
 }
 
+/// Took this from the Handlebars example on Rocket. This is probabaly not needed for anything.
 pub fn helper(
     h: &Helper,
     _: &Handlebars,
