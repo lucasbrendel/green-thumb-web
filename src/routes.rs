@@ -1,11 +1,10 @@
 use rocket;
 use rocket::response::NamedFile;
-use maud::{html, Markup};
 use std::path::{Path, PathBuf};
 
 /// This is the entrypoint
 #[get("/")]
-fn index() -> &'static str {
+pub fn index() -> &'static str {
     // maud macro
     "Hello, World"
 }
