@@ -1,6 +1,6 @@
 [tasks.format]
 command = "cargo"
-args = ["fmt", "--", "--write-mode=overwrite"]
+args = ["fmt"]
 
 [tasks.clean]
 command = "cargo"
@@ -16,25 +16,14 @@ command = "cargo"
 args = ["test"]
 dependencies = ["clean"]
 
-[tasks.my-flow]
+[tasks.flow]
 dependencies = [
     "format",
     "build",
     "test"
 ]
 
-[tasks.client-push]
-script = [
- "cd client"
-]
-
-[tasks.client-release]
+[tasks.run]
+env = { "ROCKET_CLI_COLORS" = "0" }
 command = "cargo"
-args = ["web", "--deploy", "--release"]
-
-[tasks.client-flow]
-dependencies = [
-    "client-push",
-    "format",
-    "client-release"
-]
+args = ["run"]
