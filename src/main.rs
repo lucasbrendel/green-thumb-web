@@ -32,7 +32,9 @@ fn main() {
             routes![routes::index, routes::favicon, routes::static_file],
         )
         .attach(Template::custom(|engines| {
-            engines.handlebars.register_helper("wow", Box::new(routes::helper));
+            engines
+                .handlebars
+                .register_helper("wow", Box::new(routes::helper));
         }))
         .launch();
 }
