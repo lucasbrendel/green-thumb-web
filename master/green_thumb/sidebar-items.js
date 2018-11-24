@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["main",""]],"macro":[["rocket_uri_macro_favicon","Rocket code generated wrapping URI macro."],["rocket_uri_macro_index","Rocket code generated wrapping URI macro."],["rocket_uri_macro_static_file","Rocket code generated wrapping URI macro."]],"mod":[["logging",""],["routes",""]]});
