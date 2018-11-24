@@ -9,7 +9,6 @@ args = ["clean"]
 [tasks.build]
 command = "cargo"
 args = ["build"]
-dependencies = ["clean"]
 
 [tasks.test]
 command = "cargo"
@@ -19,6 +18,7 @@ dependencies = ["clean"]
 [tasks.flow]
 dependencies = [
     "format",
+    "clean",
     "build",
     "test"
 ]
