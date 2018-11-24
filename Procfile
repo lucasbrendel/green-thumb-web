@@ -1,1 +1,1 @@
-web: ROCKET_PORT=$PORT ./target/release/green-thumb
+web: ROCKET_PORT=$PORT ROCKET_ENV=prod ./target/release/green-thumb
