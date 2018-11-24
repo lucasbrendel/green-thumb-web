@@ -1,5 +1,5 @@
-use chrono::{Duration, NaiveDate};
 use crate::data::plant::Plant;
+use chrono::{Duration, NaiveDate};
 use rusqlite::types::*;
 use rusqlite::Connection;
 
