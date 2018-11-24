@@ -1,0 +1,5 @@
+# https://github.com/toolmantim/release-drafter
+template: |
+  ## What's Changed
+
+  $CHANGES
