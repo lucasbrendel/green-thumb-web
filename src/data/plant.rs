@@ -3,18 +3,21 @@
 //! This item should contain the necessary data so that work can be done for the use to alert
 //! when work is needed to be performed.
 
-use rusqlite::types::{FromSql, FromSqlResult, ToSql, ToSqlOutput, ValueRef};
-use rusqlite::{Connection, Result, NO_PARAMS};
-use std::str::FromStr;
+use crate::data::DataMgr;
+use diesel::prelude::*;
+use diesel::serialize::*;
+use crate::schema::plants::dsl::*;
+use crate::schema::plants;
+use diesel_derive_enum::*;
 
 /// Standard type to define all things to grow
-#[derive(Debug)]
+#[derive(Debug, Queryable)]
 pub struct Plant {
     pub id: i64,
     /// Name of a plant.
     pub name: String,
     /// Seasonal type of plant
-    pub plant_type: PlantType,
+    // pub plant_type: PlantType,
     /// Growing zones defined by USDA that a plant can survive in. This is limited to first 10 zones.
     pub zones: Vec<u8>,
     /// Any description or textual things to track about the plant.
@@ -23,8 +26,15 @@ pub struct Plant {
     pub days_to_maturity: i64,
 }
 
+#[derive(Insertable)]
+#[table_name="plants"]
+pub struct NewPlant<'a> {
+    pub name: &'a str,
+    // pub plant_type: &'a PlantType,
+}
+
 /// Seasonal variety types of plants
-#[derive(Debug, PartialEq, Serialize, Deserialize, Display, EnumString, AsStaticStr)]
+#[derive(DbEnum, Debug)]
 pub enum PlantType {
     /// Plant has one growing season and needs to be replanted every year
     Annual,
@@ -32,92 +42,35 @@ pub enum PlantType {
     Perennial,
 }
 
-impl ToSql for PlantType {
-    fn to_sql(&self) -> Result<ToSqlOutput> {
-        let ty = self.to_string();
-        Ok(ToSqlOutput::from(ty))
-    }
-}
+// impl Plant {
+//     /// Create a new plant type
+//     pub fn new(
+//         mgr: &DataMgr,
+//         name: String,
+//         days_to_maturity: i64,
+//         plant_type: PlantType,
+//     ) -> Self {
 
-impl FromSql for PlantType {
-    fn column_result(value: ValueRef) -> FromSqlResult<Self> {
-        match PlantType::from_str(value.as_str().unwrap()).unwrap() {
-            PlantType::Annual => Ok(PlantType::Annual),
-            PlantType::Perennial => Ok(PlantType::Perennial),
-            // _ => Err(FromSqlError::InvalidType),
-        }
-    }
-}
+//         Plant {
+//             id: 0,
+//             name,
+//             plant_type,
+//             notes: String::from(""),
+//             zones: Vec::new(),
+//             days_to_maturity,
+//         }
+//     }
 
-impl Plant {
-    /// Create a new plant type
-    pub fn new(
-        conn: &Connection,
-        name: String,
-        days_to_maturity: i64,
-        plant_type: PlantType,
-    ) -> Self {
-        conn.execute(
-            "INSERT INTO plants (name, days_to_maturity, plant_type, zones, notes)
-            VALUES (?1, ?2, ?3, ?4, ?5)",
-            &[
-                &name as &ToSql,
-                &days_to_maturity,
-                &plant_type,
-                &Vec::new(),
-                &String::from(""),
-            ],
-        )
-        .unwrap();
+//     /// Access all defined plants
+//     pub fn get_plants(conn: &DataMgr) -> Result<Vec<Plant>> {
+        
+//     }
 
-        Plant {
-            id: conn.last_insert_rowid(),
-            name,
-            plant_type,
-            notes: String::from(""),
-            zones: Vec::new(),
-            days_to_maturity,
-        }
-    }
-
-    /// Access all defined plants
-    pub fn get_plants(conn: &Connection) -> Result<Vec<Plant>> {
-        let mut plants: Vec<Plant> = Vec::new();
-        let mut stmt = conn
-            .prepare("SELECT id, name, days_to_maturity, zones, notes, plant_type FROM plants")?;
-        info!("Get Plants: {:?}", stmt);
-        let map_plants = stmt.query_map(NO_PARAMS, |row| Plant {
-            id: row.get(0),
-            name: row.get(1),
-            days_to_maturity: row.get(2),
-            zones: row.get(3),
-            notes: row.get(4),
-            plant_type: row.get(5),
-        })?;
-        for plant in map_plants {
-            info!("Accessing {:?}", plant);
-            plants.push(plant.unwrap());
-        }
-        Ok(plants)
-    }
-
-    /// Obtain a plant based on the database id provided
-    pub fn get_plant_by_id(conn: &Connection, uid: i64) -> Result<Plant> {
-        let mut stmt = conn.prepare(
-            "SELECT name, days_to_maturity, zones, notes, plant_type FROM plants WHERE id = :uid",
-        )?;
-        info!("Get Plant by ID: {:?}", stmt);
-        let plant = stmt.query_map(&[&uid], |row| Plant {
-            id: uid,
-            name: row.get(0),
-            days_to_maturity: row.get(1),
-            zones: row.get(2),
-            notes: row.get(3),
-            plant_type: row.get(4),
-        })?;
-        Ok(plant.last().unwrap().unwrap())
-    }
-}
+//     /// Obtain a plant based on the database id provided
+//     pub fn get_plant_by_id(conn: &DataMgr, uid: i64) -> Result<Plant> {
+        
+//     }
+// }
 
 #[cfg(test)]
 mod tests {

@@ -15,17 +15,27 @@ extern crate strum_macros;
 #[macro_use]
 extern crate log;
 extern crate simplelog;
+#[macro_use]
+extern crate diesel;
+extern crate dotenv;
+extern crate diesel_derive_enum;
 
 #[allow(dead_code)]
-// mod data;
-mod logging;
+mod data;
+// mod logging;
 mod routes;
 
+pub mod schema;
+
 use rocket_contrib::templates::Template;
+use dotenv::dotenv;
+use std::env;
 
 fn main() {
     // logging::logging_init();
-    // let _mgr = data::DataMgr::new(String::from("./db/green-thumb.db"));
+    dotenv().ok();
+    let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let _mgr = data::DataMgr::new(url);
     rocket::ignite()
         .mount(
             "/",
