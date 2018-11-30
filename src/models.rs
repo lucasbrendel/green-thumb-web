@@ -5,7 +5,7 @@ use diesel_derive_enum::*;
 /// Standard type to define all things to grow
 #[derive(Debug, Queryable)]
 pub struct Plant {
-    pub id: i64,
+    pub id: i32,
     /// Name of a plant.
     pub title: String,
     /// Seasonal type of plant
