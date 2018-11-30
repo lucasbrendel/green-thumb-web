@@ -29,8 +29,4 @@ table! {
 
 joinable!(crops -> plants (plant_id));
 
-allow_tables_to_appear_in_same_query!(
-    crops,
-    plants,
-    tasks,
-);
+allow_tables_to_appear_in_same_query!(crops, plants, tasks,);

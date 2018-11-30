@@ -1,6 +1,6 @@
 use crate::schema::plants;
-use diesel_derive_enum::*;
 use diesel::prelude::Insertable;
+use diesel_derive_enum::*;
 
 /// Standard type to define all things to grow
 #[derive(Debug, Queryable)]

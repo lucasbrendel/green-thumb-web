@@ -9,10 +9,10 @@ extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;
 // extern crate serde_rusqlite;
-extern crate strum;
-extern crate strum_macros;
 extern crate log;
 extern crate simplelog;
+extern crate strum;
+extern crate strum_macros;
 #[macro_use]
 extern crate diesel;
 extern crate diesel_derive_enum;
@@ -23,8 +23,8 @@ pub mod data;
 // mod logging;
 mod routes;
 
-pub mod schema;
 pub mod models;
+pub mod schema;
 
 use dotenv::dotenv;
 use rocket_contrib::templates::Template;
