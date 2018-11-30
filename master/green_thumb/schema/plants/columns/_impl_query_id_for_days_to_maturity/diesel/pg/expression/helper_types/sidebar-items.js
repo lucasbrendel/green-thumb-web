@@ -1,0 +1,1 @@
+initSidebarItems({"type":[["ILike","The return type of `lhs.ilike(rhs)`"],["NotILike","The return type of `lhs.not_ilike(rhs)`"]]});

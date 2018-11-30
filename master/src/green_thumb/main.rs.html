@@ -38,6 +38,15 @@
 <span id="38">38</span>
 <span id="39">39</span>
 <span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">proc_macro_hygiene</span>, <span class="ident">decl_macro</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">uniform_paths</span>)]</span>
@@ -50,23 +59,32 @@
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">serde_derive</span>;
 <span class="comment">// extern crate serde_rusqlite;</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">strum</span>;
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">strum_macros</span>;
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">log</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">simplelog</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">strum</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">strum_macros</span>;
+<span class="attribute">#[<span class="ident">macro_use</span>]</span>
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">diesel</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">diesel_derive_enum</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">dotenv</span>;
 
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
-<span class="comment">// mod data;</span>
-<span class="kw">mod</span> <span class="ident">logging</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">data</span>;
+<span class="comment">// mod logging;</span>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">models</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">plant</span>;
 <span class="kw">mod</span> <span class="ident">routes</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">schema</span>;
 
+<span class="kw">use</span> <span class="ident">dotenv</span>::<span class="ident">dotenv</span>;
 <span class="kw">use</span> <span class="ident">rocket_contrib</span>::<span class="ident">templates</span>::<span class="ident">Template</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">env</span>;
 
 <span class="kw">fn</span> <span class="ident">main</span>() {
     <span class="comment">// logging::logging_init();</span>
-    <span class="comment">// let _mgr = data::DataMgr::new(String::from(&quot;./db/green-thumb.db&quot;));</span>
+    <span class="ident">dotenv</span>().<span class="ident">ok</span>();
+    <span class="kw">let</span> <span class="ident">url</span> <span class="op">=</span> <span class="ident">env</span>::<span class="ident">var</span>(<span class="string">&quot;DATABASE_URL&quot;</span>).<span class="ident">expect</span>(<span class="string">&quot;DATABASE_URL must be set&quot;</span>);
+    <span class="kw">let</span> <span class="ident">_mgr</span> <span class="op">=</span> <span class="ident">data</span>::<span class="ident">DataMgr</span>::<span class="ident">new</span>(<span class="ident">url</span>);
     <span class="ident">rocket</span>::<span class="ident">ignite</span>()
         .<span class="ident">mount</span>(
             <span class="string">&quot;/&quot;</span>,

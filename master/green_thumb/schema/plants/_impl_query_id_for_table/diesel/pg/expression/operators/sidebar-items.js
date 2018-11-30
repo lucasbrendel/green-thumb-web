@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Contains",""],["ILike",""],["IsContainedBy",""],["IsDistinctFrom",""],["IsNotDistinctFrom",""],["NotILike",""],["NullsFirst",""],["NullsLast",""],["OverlapsWith",""]]});
