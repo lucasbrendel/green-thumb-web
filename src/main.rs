@@ -21,9 +21,9 @@ extern crate dotenv;
 #[allow(dead_code)]
 pub mod data;
 // mod logging;
-mod routes;
-pub mod plant;
 pub mod models;
+pub mod plant;
+mod routes;
 pub mod schema;
 
 use dotenv::dotenv;
