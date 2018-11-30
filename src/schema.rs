@@ -10,7 +10,7 @@ table! {
 table! {
     plants (id) {
         id -> Int4,
-        name -> Text,
+        title -> Text,
         days_to_maturity -> Nullable<Int4>,
         notes -> Nullable<Text>,
         zones -> Nullable<Array<Int4>>,

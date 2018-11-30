@@ -10,25 +10,24 @@ extern crate rocket_contrib;
 extern crate serde_derive;
 // extern crate serde_rusqlite;
 extern crate strum;
-#[macro_use]
 extern crate strum_macros;
-#[macro_use]
 extern crate log;
 extern crate simplelog;
 #[macro_use]
 extern crate diesel;
-extern crate dotenv;
 extern crate diesel_derive_enum;
+extern crate dotenv;
 
 #[allow(dead_code)]
-mod data;
+pub mod data;
 // mod logging;
 mod routes;
 
 pub mod schema;
+pub mod models;
 
-use rocket_contrib::templates::Template;
 use dotenv::dotenv;
+use rocket_contrib::templates::Template;
 use std::env;
 
 fn main() {
