@@ -12,8 +12,7 @@ use diesel;
 pub fn create_plant<'a>(
     mgr: &DataMgr,
     title: &'a str,
-    days_to_maturity: i32,
-    plant_type: PlantType
+    days_to_maturity: i32
     ) -> Plant {
     let new_plant = NewPlant { title: title, days_to_maturity: days_to_maturity };
     diesel::insert_into(plants::table)
