@@ -9,6 +9,7 @@ args = ["clean"]
 [tasks.build]
 command = "cargo"
 args = ["build"]
+dependencies = ["format"]
 
 [tasks.test]
 command = "cargo"
@@ -36,6 +37,6 @@ args = ["migration", "run"]
 dependencies = [
     "migrate",
     "clean",
-    "format"
+    "format",
     "build"
 ]
