@@ -43,3 +43,18 @@ pub fn helper(
 
     Ok(())
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::rockets;
+    use rocket::http::Status;
+    use rocket::local::Client;
+
+    #[test]
+    fn test_index() {
+        let client = Client::new(rockets()).unwrap();
+        let mut response = client.get("/").dispatch();
+        assert_eq!(response.status(), Status::Ok);
+    }
+}

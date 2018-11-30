@@ -30,11 +30,7 @@ use dotenv::dotenv;
 use rocket_contrib::templates::Template;
 use std::env;
 
-fn main() {
-    // logging::logging_init();
-    dotenv().ok();
-    let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    let _mgr = data::DataMgr::new(url);
+pub fn rockets() -> rocket::Rocket {
     rocket::ignite()
         .mount(
             "/",
@@ -45,5 +41,16 @@ fn main() {
                 .handlebars
                 .register_helper("wow", Box::new(routes::helper));
         }))
-        .launch();
+}
+
+// fn attach_db() -> rocket::Rocket {
+//         let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+//         let _mgr = data::DataMgr::new(url);
+//         Self
+// }
+
+fn main() {
+    // logging::logging_init();
+    dotenv().ok();
+    rockets().launch();
 }
