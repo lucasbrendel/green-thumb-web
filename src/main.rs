@@ -43,14 +43,10 @@ pub fn rockets() -> rocket::Rocket {
         }))
 }
 
-// fn attach_db() -> rocket::Rocket {
-//         let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-//         let _mgr = data::DataMgr::new(url);
-//         Self
-// }
-
 fn main() {
     // logging::logging_init();
     dotenv().ok();
+    let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let _mgr = data::DataMgr::new(url);
     rockets().launch();
 }

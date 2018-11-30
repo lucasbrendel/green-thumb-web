@@ -68,4 +68,11 @@ mod test {
         let response = client.get("/favicon.ico").dispatch();
         assert_eq!(response.status(), Status::Ok);
     }
+
+    #[test]
+    fn test_static() {
+        let client = Client::new(rockets()).unwrap();
+        let response = client.get("/static/favicon.ico").dispatch();
+        assert_eq!(response.status(), Status::Ok);
+    }
 }
