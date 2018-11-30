@@ -27,3 +27,15 @@ dependencies = [
 env = { "ROCKET_CLI_COLORS" = "0" }
 command = "cargo"
 args = ["run"]
+
+[tasks.migrate]
+command = "diesel"
+args = ["migration", "run"]
+
+[tasks.migflow]
+dependencies = [
+    "migrate",
+    "clean",
+    "format"
+    "build"
+]

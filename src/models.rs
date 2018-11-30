@@ -11,11 +11,11 @@ pub struct Plant {
     /// Seasonal type of plant
     // pub plant_type: PlantType,
     /// Growing zones defined by USDA that a plant can survive in. This is limited to first 10 zones.
-    pub zones: Vec<u8>,
+    // pub zones: Vec<u8>,
     /// Any description or textual things to track about the plant.
-    pub notes: String,
+    // pub notes: String,
     /// Number of days from planting until germination occurs
-    pub days_to_maturity: i64,
+    pub days_to_maturity: i32,
 }
 
 #[derive(Insertable)]
@@ -23,6 +23,9 @@ pub struct Plant {
 pub struct NewPlant<'a> {
     pub title: &'a str,
     // pub plant_type: &'a PlantType,
+    // pub zones: Vec<u8>,
+    // pub notes: &'a str,
+    pub days_to_maturity: i32,
 }
 
 /// Seasonal variety types of plants
@@ -32,4 +35,17 @@ pub enum PlantType {
     Annual,
     /// Plant survives over multiple growing seasons.
     Perennial,
+}
+
+/// Tracking the growth and harvest of a specific plant
+#[derive(Debug, Queryable)]
+pub struct Crop {
+    /// Number of plants sown
+    pub num_plants: u32,
+    /// The date that the plants were planted
+    // pub date_planted: NaiveDate,
+    /// The id of the plant sown
+    pub plant_id: i64,
+    /// Unique id for the crop
+    pub id: i64,
 }

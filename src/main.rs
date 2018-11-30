@@ -22,7 +22,7 @@ extern crate dotenv;
 pub mod data;
 // mod logging;
 mod routes;
-
+pub mod plant;
 pub mod models;
 pub mod schema;
 
