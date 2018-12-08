@@ -14,7 +14,6 @@ dependencies = ["format"]
 [tasks.test]
 command = "cargo"
 args = ["test"]
-dependencies = ["clean"]
 
 [tasks.flow]
 dependencies = [
