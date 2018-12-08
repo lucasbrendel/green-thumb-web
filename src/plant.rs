@@ -19,3 +19,21 @@ pub fn create_plant<'a>(mgr: &DataMgr, title: &'a str, days_to_maturity: i32) ->
         .get_result(&mgr.conn)
         .expect("Error creating new plant")
 }
+
+#[cfg(test)]
+mod test{
+    use super::*;
+    use std::env;
+    use crate::data;
+    use diesel::prelude::*;
+    use dotenv::dotenv;
+    
+    #[test]
+    fn test_create_plant() {
+        dotenv().ok();
+        let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+        let mgr = data::DataMgr::new(url);
+        mgr.conn.begin_test_transaction().unwrap();
+        create_plant(&mgr, "Tomato", 45);
+    }
+}
