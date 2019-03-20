@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["date_and_time",""],["floats",""],["money","Support for Money values under PostgreSQL."],["sql_types","PostgreSQL specific SQL types"]]});
