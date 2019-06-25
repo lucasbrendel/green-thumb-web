@@ -5,7 +5,7 @@ name = "green-thumb"
 version = "0.1.0"
 
 [dependencies]
-chrono = "0.4.6"
+chrono = "0.4.7"
 log = "0.4.6"
 rocket = "0.4.1"
 rocket_codegen = "0.4.0-rc.1"
