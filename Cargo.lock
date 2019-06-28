@@ -323,7 +323,7 @@ dependencies = [
  "rocket_codegen 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket_contrib 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.93 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde_derive 1.0.93 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde_derive 1.0.94 (registry+https://github.com/rust-lang/crates.io-index)",
  "simplelog 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "strum 0.15.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "strum_macros 0.15.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -918,7 +918,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "serde_derive"
-version = "1.0.93"
+version = "1.0.94"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "proc-macro2 0.4.24 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1402,7 +1402,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum semver 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1d7eb9ef2c18661902cc47e535f9bc51b78acd254da71d375c2f6720d9a40403"
 "checksum semver-parser 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "388a1df253eca08550bef6c72392cfe7c30914bf41df5269b68cbd6ff8f570a3"
 "checksum serde 1.0.93 (registry+https://github.com/rust-lang/crates.io-index)" = "960e29cf7004b3b6e65fc5002981400eb3ccc017a08a2406940823e58e7179a9"
-"checksum serde_derive 1.0.93 (registry+https://github.com/rust-lang/crates.io-index)" = "c4cce6663696bd38272e90bf34a0267e1226156c33f52d3f3915a2dd5d802085"
+"checksum serde_derive 1.0.94 (registry+https://github.com/rust-lang/crates.io-index)" = "ef45eb79d6463b22f5f9e16d283798b7c0175ba6050bc25c1a946c122727fe7b"
 "checksum serde_json 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)" = "c37ccd6be3ed1fdf419ee848f7c758eb31b054d7cd3ae3600e3bae0adf569811"
 "checksum sha-1 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "51b9d1f3b5de8a167ab06834a7c883bd197f2191e1dda1a22d9ccfeedbf9aded"
 "checksum simplelog 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "aa9c948a5a26cd38340ddbeaa557a8c8a5ce4442408eb60453bee2bb3c84a3fb"
