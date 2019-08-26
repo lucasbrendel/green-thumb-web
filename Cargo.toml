@@ -12,7 +12,7 @@ rocket_codegen = "0.4.0-rc.1"
 serde = "1.0.98"
 serde_derive = "1.0.98"
 # serde_rusqlite = "0.15.0"
-simplelog = "0.6.0"
+simplelog = "0.7.1"
 strum = "0.15.0"
 strum_macros = "0.15.0"
 diesel = { version = "1.4.2", features = ["postgres"] }
