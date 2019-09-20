@@ -14,7 +14,7 @@ addons:
       - cmake
 before_script:
   - rustup component add rustfmt
-  - rustup component add clippy
+#  - rustup component add clippy
   - cargo install cargo-update || echo "cargo-update already installed"
   - cargo install cargo-travis || echo "cargo-travis already installed"
   - cargo install-update -a
@@ -22,7 +22,7 @@ script:
   - cargo fmt --all -- --check
 # if you want the build job to fail when encountering warnings and
 # in order to also check tests and none-default crate features
-  - cargo clippy --all-targets --all-features
+#  - cargo clippy --all-targets --all-features
   - cargo build --verbose --all && cargo coverage --verbose && bash <(curl -s https://codecov.io/bash) -s target/kcov
   - cargo coverage --verbose
   - cargo test --verbose --all
