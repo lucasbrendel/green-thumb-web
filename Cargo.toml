@@ -14,7 +14,7 @@ serde_derive = "1.0.98"
 # serde_rusqlite = "0.15.0"
 simplelog = "0.7.3"
 strum = "0.16.0"
-strum_macros = "0.15.0"
+strum_macros = "0.16.0"
 diesel = { version = "1.4.2", features = ["postgres"] }
 dotenv = "0.14.1"
 diesel-derive-enum = { version = "0.4", features = ["postgres"] }
