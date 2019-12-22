@@ -1,0 +1,27 @@
+name: Rust
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: 'nightly'
+      - name: Install Postgres
+        run:
+          sudo apt-get install libpq-dev
+      - name: Cargo Check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - name: Cargo Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
