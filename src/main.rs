@@ -18,12 +18,11 @@ extern crate diesel_derive_enum;
 extern crate diesel_migrations;
 extern crate dotenv;
 
-#[allow(dead_code)]
-pub mod data;
+mod routes;
 mod logging;
+pub mod data;
 pub mod models;
 pub mod plant;
-mod routes;
 pub mod schema;
 
 use dotenv::dotenv;
