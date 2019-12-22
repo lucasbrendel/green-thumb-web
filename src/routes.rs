@@ -33,7 +33,7 @@ pub fn helper(
     _: &Handlebars,
     _: &Context,
     _: &mut RenderContext,
-    out: &mut Output,
+    out: &mut dyn Output,
 ) -> HelperResult {
     if let Some(param) = h.param(0) {
         out.write("<b><i>")?;
@@ -46,10 +46,9 @@ pub fn helper(
 
 #[cfg(test)]
 mod test {
-    use super::*;
     use crate::rockets;
     use rocket::http::Status;
-    use rocket::local::{Client, LocalResponse};
+    use rocket::local::{Client};
 
     // fn launch_and_get<'c>(route: &'c str) -> LocalResponse<'c> {
     //     Client::new(rockets()).unwrap().get(route).dispatch()
