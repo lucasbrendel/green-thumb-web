@@ -48,7 +48,7 @@ pub fn helper(
 mod test {
     use crate::rockets;
     use rocket::http::Status;
-    use rocket::local::{Client};
+    use rocket::local::Client;
 
     // fn launch_and_get<'c>(route: &'c str) -> LocalResponse<'c> {
     //     Client::new(rockets()).unwrap().get(route).dispatch()
