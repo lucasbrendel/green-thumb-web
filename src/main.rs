@@ -4,10 +4,9 @@
 extern crate rocket;
 extern crate chrono;
 extern crate rocket_contrib;
-// extern crate rusqlite;
 #[macro_use]
 extern crate serde_derive;
-// extern crate serde_rusqlite;
+#[macro_use]
 extern crate log;
 extern crate simplelog;
 extern crate strum;
@@ -15,6 +14,8 @@ extern crate strum_macros;
 #[macro_use]
 extern crate diesel;
 extern crate diesel_derive_enum;
+#[macro_use]
+extern crate diesel_migrations;
 extern crate dotenv;
 
 #[allow(dead_code)]
@@ -42,10 +43,16 @@ pub fn rockets() -> rocket::Rocket {
         }))
 }
 
+embed_migrations!();
+
 fn main() {
     logging::logging_init();
     dotenv().ok();
     let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
     let _mgr = data::DataMgr::new(url);
+    match embedded_migrations::run(&_mgr.conn) {
+        Ok(_) => info!("Database migrated sucessfully"),
+        Err(_) => error!("Database failed to migrate")
+    }
     rockets().launch();
 }
