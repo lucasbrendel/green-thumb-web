@@ -3,7 +3,7 @@
 //! This item should contain the necessary data so that work can be done for the use to alert
 //! when work is needed to be performed.
 use crate::data::DataMgr;
-use crate::models::{NewPlant, Plant, PlantType};
+use crate::models::{NewPlant, Plant};
 use crate::schema::plants;
 use diesel;
 use diesel::RunQueryDsl;
