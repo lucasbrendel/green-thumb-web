@@ -19,7 +19,7 @@ extern crate dotenv;
 
 #[allow(dead_code)]
 pub mod data;
-// mod logging;
+mod logging;
 pub mod models;
 pub mod plant;
 mod routes;
@@ -43,7 +43,7 @@ pub fn rockets() -> rocket::Rocket {
 }
 
 fn main() {
-    // logging::logging_init();
+    logging::logging_init();
     dotenv().ok();
     let url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
     let _mgr = data::DataMgr::new(url);

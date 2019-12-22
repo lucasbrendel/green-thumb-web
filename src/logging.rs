@@ -11,7 +11,7 @@ use std::fs::File;
 /// trace!
 pub fn logging_init() {
     CombinedLogger::init(vec![
-        TermLogger::new(LevelFilter::Warn, Config::default()).unwrap(),
+        TermLogger::new(LevelFilter::Warn, Config::default(), TerminalMode::Mixed).unwrap(),
         WriteLogger::new(
             LevelFilter::Info,
             Config::default(),
