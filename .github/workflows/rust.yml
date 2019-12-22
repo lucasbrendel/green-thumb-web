@@ -7,17 +7,13 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        rust-channel: [ 'stable', 'nightly' ]
-    name: ${{ matrix.rust-channel }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Install toolchain
         uses: actions-rs/toolchain@v1
         with:
-            toolchain: ${{ matrix.rust-channel }}
+            toolchain: 'nightly'
       - name: Cargo Check
         uses: actions-rs/cargo@v1
         with:
