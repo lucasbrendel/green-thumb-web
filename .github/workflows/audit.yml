@@ -2,7 +2,7 @@ name: Audit
 on:
   push:
     branches:
-    - master
+      - master
 jobs:
   audit:
     runs-on: ubuntu-latest
