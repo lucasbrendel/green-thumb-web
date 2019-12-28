@@ -12,8 +12,8 @@ extern crate simplelog;
 extern crate strum;
 extern crate strum_macros;
 
-mod routes;
 mod logging;
+mod routes;
 
 use rocket_contrib::templates::Template;
 
@@ -29,7 +29,6 @@ pub fn rockets() -> rocket::Rocket {
                 .register_helper("wow", Box::new(routes::helper));
         }))
 }
-
 
 fn main() {
     logging::logging_init();

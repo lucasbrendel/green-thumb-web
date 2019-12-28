@@ -27,6 +27,11 @@ pub fn static_file(path: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("static/").join(path)).ok()
 }
 
+#[get("/plant/new")]
+pub fn create_plant() -> Template {
+    Template::render("create_plant", &TemplateContext { parent: "layout" })
+}
+
 /// Took this from the Handlebars example on Rocket. This is probabaly not needed for anything.
 pub fn helper(
     h: &Helper,
