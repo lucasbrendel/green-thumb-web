@@ -12,7 +12,7 @@ rocket_codegen = "0.4.2"
 serde = "1.0.104"
 serde_derive = "1.0.104"
 simplelog = "0.7.4"
-strum = "0.17.1"
+strum = "0.18.0"
 strum_macros = "0.17.1"
 diesel = { version = "1.4.3", features = ["postgres"] }
 dotenv = "0.15.0"
